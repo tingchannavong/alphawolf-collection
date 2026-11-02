@@ -9,10 +9,11 @@ interface Props {
     max_players: number;
     playing_time: number;
     box_size: string;
+    manuals: Array<string>
     // using description placeholder for Location, do i need one for category?
 }
 
-const { href, title, body, img, category, playing_time, min_players, max_players, box_size} = Astro.props;
+const { href, title, body, img, category, playing_time, min_players, max_players, box_size, manuals} = Astro.props;
 ---
 
 <div class="game-item">
@@ -34,5 +35,11 @@ const { href, title, body, img, category, playing_time, min_players, max_players
     </div>
     <div class="game-meta">
         <a href={href} class="game-read-more">Read more</a>
+        {
+            manuals 
+            ? <a href={`/rules/${href.split('/').pop()}`} class="game-read-more">Rules</a>
+            : <span></span>
+        }
+        
     </div>
 </div>

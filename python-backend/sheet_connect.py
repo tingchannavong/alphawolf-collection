@@ -63,7 +63,8 @@ replacements_dict = {
     "&hellip;": " ",
     "&rdquo;": " ",
     "&lsquo;": " ",
-    "&rsquo;": " "
+    "&rsquo;": " ",
+    "\"" : "'"
 }
 
 # Connect to sheet
@@ -74,24 +75,22 @@ sheet = sheet_obj['Game']
 
 # 1. Set Image Folder
 # image_folder = r"C:\Users\Macbook pro\Desktop\AWsite\public"
-image_folder = r"/Users/macbook/Desktop/Alpha-Wolf-Collection-Astro/python-backend/bgg-images"
+image_folder = r"/Users/macbook/Desktop/deploy/alpha/public"
 
 # 2. Set markdown save folder
-output_folder = r"/Users/macbook/Desktop/Alpha-Wolf-Collection-Astro/src/pages/boardgames"
-
-# search_sample = {109: ('Mr. Jack New York', None), 110: ('Die Fiesen 7', None)}
-# Games to fetch info and create markdowns
-manual_search = {
-        'row-number': ("Game name", '6-digit-id'), 
-}
+output_folder = r"/Users/macbook/Desktop/deploy/alpha/src/pages/boardgames"
 
 # 3. EXAMPLE USAGE
-# get_row_games_id(sheet, 93, 110)
 
+# EITHER use manual search for games to fetch info and create markdowns like below
+# search_sample = {109: ('Mr. Jack New York', None), 110: ('Die Fiesen 7', None)}
+manual_search = {
+        # 'row-number': ("Game name", '6-digit-id'), 
+}
+# OR search function below
+
+# search = get_row_games_id(sheet, 110, 114)
 # loop_sheet_find_game(sheet, image_folder, search)
-
-# loop_range_fnr_1s(sheet, 93, 108)
-
-# replace_spaces_in_filepath(sheet, "G", 93, 110)
-
-# bulk_create_mds(sheet, 109, 110, output_folder)
+# loop_range_fnr_1s(sheet, 110, 114)
+# replace_spaces_in_filepath(sheet, "G", 110, 114)
+# bulk_create_mds(sheet, 114, 115, output_folder)

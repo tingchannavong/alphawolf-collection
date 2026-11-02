@@ -1,0 +1,77 @@
+---
+import MainLayout from "../../layouts/main-layout.astro";
+import ManualCard from "../../components/manual-card.astro";
+
+export async function getStaticPaths() {
+    const allGames = await Astro.glob(`../boardgames/*.md`);
+    const pathsArray = allGames.map( game => {
+        const name = game.url.split('/').pop();
+
+        return {
+            params: { game: name }
+        }
+    })
+    return pathsArray;
+}
+
+const { game } = Astro.params;
+const gamesList = await Astro.glob(`../boardgames/*.md`);
+
+const currentGame = gamesList.find( each => {
+    const filename = each.url.split('/').pop();
+    return filename === game;
+});
+
+const manuals = currentGame?.frontmatter?.manuals || [];
+
+---
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/styles/alpha_style.css">
+    <title>Instruction</title>
+</head>
+
+<MainLayout>
+    <body>
+        <section id="all-games-section" class="container">
+            <button id="back_button" class="back-btn">← Back</button>
+            <button id="read-more-btn" data-game={JSON.stringify(currentGame)} class="back-btn">Read More</button>
+            <div class="carousel-container">
+                <button class="gallery-btn">Left</button>
+                <div class="carousel-wrapper">
+                    <div class="gallery">
+                        {
+                        manuals.map( img_url =>  <ManualCard image={img_url}></ManualCard>)
+                        }
+                    </div>    
+                </div> 
+                 <button>Right</button>
+            </div>
+            <div class="lil-nav">
+                <div class="bubble"></div>
+                <div class="bubble active"></div>
+            </div>
+        </section>
+
+    </body>
+       <script>
+        const galleryBubbles = document.querySelector(".lil-nav");
+        const backButton = document.querySelector("#back_button");
+        const readButton = document.getElementById("read-more-btn");
+        const currentGame = JSON.parse(readButton.dataset.game);
+    
+        if (backButton) {
+            backButton.addEventListener("click", () => {
+                // Navigate back in history
+                history.back();
+            });
+        }
+        readButton.addEventListener("click", () => window.location.href = `${currentGame.url}`);
+
+        if (currentGame.frontmatter.manuals) {
+            // create elements of bubbles
+            // loop through the manuals array
+        }
+    </script>
+</MainLayout>
