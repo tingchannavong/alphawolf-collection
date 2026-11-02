@@ -63,7 +63,8 @@ replacements_dict = {
     "&hellip;": " ",
     "&rdquo;": " ",
     "&lsquo;": " ",
-    "&rsquo;": " "
+    "&rsquo;": " ",
+    "\"" : "'"
 }
 
 # Connect to sheet
@@ -80,17 +81,16 @@ image_folder = r"/Users/macbook/Desktop/deploy/alpha/public"
 output_folder = r"/Users/macbook/Desktop/deploy/alpha/src/pages/boardgames"
 
 # 3. EXAMPLE USAGE
-search = get_row_games_id(sheet, 110, 114)
-# Either use search function abovo or do manual search for games to fetch info and create markdowns like below
+
+# EITHER use manual search for games to fetch info and create markdowns like below
 # search_sample = {109: ('Mr. Jack New York', None), 110: ('Die Fiesen 7', None)}
 manual_search = {
-        'row-number': ("Game name", '6-digit-id'), 
+        # 'row-number': ("Game name", '6-digit-id'), 
 }
+# OR search function below
 
-loop_sheet_find_game(sheet, image_folder, search)
-
-loop_range_fnr_1s(sheet, 110, 114)
-
-replace_spaces_in_filepath(sheet, "G", 110, 114)
-
-bulk_create_mds(sheet, 110, 114, output_folder)
+# search = get_row_games_id(sheet, 110, 114)
+# loop_sheet_find_game(sheet, image_folder, search)
+# loop_range_fnr_1s(sheet, 110, 114)
+# replace_spaces_in_filepath(sheet, "G", 110, 114)
+# bulk_create_mds(sheet, 114, 115, output_folder)
