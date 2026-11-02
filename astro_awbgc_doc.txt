@@ -12,22 +12,25 @@ In project folder:
 	3. activate venv
 		In mac: source venv/bin/activate
 		In wins: .venv\Scripts\activate
-	4. pip install EZSHEETS
-	5. DONE!
+	4. pip install EZSHEETS dotenv
+	5. DONE! Command to exit virtual environment: deactivate
 
 STEPS TO AUTHORIZE EZSHEETS:
 	1. Enable API of Google sheet && google drive in google cloud console
 		- https://console.developers.google.com/apis/library/sheets.googleapis.com/
 		- https://console.developers.google.com/apis/library/drive.googleapis.com/
 	2. If re-authorize, delete credentials.json, & 2 pickle files
-	3. In existing google cloud project Ex: BGG-Geek (or new), go to OAuth consent screen tab under API & services.
+	3. In existing google cloud project Ex: BGG-Geek (or new), click API & services tab and then click OAuth consent.
 		Manage OAuth consent below: 
 	4. Go to Branding page & create app for external audience.
 	5. Go to Audience page, add test user's email.
-	6. Go to clients, create (+) OAuth client ID for desktop app & download json file.
-	7. Copy json file to put in your project folder and rename as "credentials-sheet.json".
-	8. Run the python project & log in to ur google account when prompted, this will auto create the 2 new pickle files.
-	9. DONE!
+	6. Go to clients, create (+) OAuth client ID for DESKTOP APP & download json file.
+	7. Copy json file to put in your root project folder and rename as "credentials-sheet.json".
+	8. Add redirect URIs:
+	  - http://127.0.0.1:8080/
+	  - http://localhost:8080/
+	9. Run the python project & log in to ur google account when prompted, this will auto create the 2 new pickle files.
+	10. DONE!
 
 ADD NEW GAME IN GOOGLE SHEET LINK: 
 "https://docs.google.com/spreadsheets/d/1a-TIrVEULIaBvgeQDHj51CDNaIySzU27A-vkL05GQMw/edit?gid=2047405203#gid=2047405203"
@@ -47,6 +50,12 @@ w/ replace_spaces_in_filepath(sheet, "G", 91, 92)
 
 # 4. Bulk create markdowns 
 w/ bulk_create_mds(sheet, 89, 92, output_folder)
+
+# 5. Run command: python3 ./python-backend/sheet_connect.py
+
+NOTES
+Link to get boardgamegeek API: 
+https://boardgamegeek.com/applications
 
 npm run dev - for testing
 
