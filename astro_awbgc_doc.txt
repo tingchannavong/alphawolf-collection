@@ -37,7 +37,7 @@ ADD NEW GAME IN GOOGLE SHEET LINK:
 
 STEPS TO ADD NEW GAME VIA sheet_connect.py
 # 0. create games object/dictionary
-w/ get_row_games_id(sheet, start, end)
+w/ get_row_games_id(sheet, start, end + 1)
 
 # 1. Get game infor via API 
 w/ loop_sheet_find_game(sheet, image_folder, games_dict)
