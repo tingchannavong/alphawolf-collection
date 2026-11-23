@@ -26,6 +26,8 @@
   "devDependencies": {
     "@semantic-release/changelog": "^6.0.3",
     "@semantic-release/git": "^10.0.1",
+    "@testing-library/dom": "^10.4.2",
+    "@testing-library/jest-dom": "^8.0.0",
     "happy-dom": "^21.0.4",
     "semantic-release": "^25.0.9",
     "vitest": "^5.1.1"
